@@ -16,8 +16,9 @@ class FizzBuzz {
 
     	Console.WriteLine("1. Normal FizzBuzz");
     	Console.WriteLine("2. Dynamic loop FizzBuzz");
-    	Console.WriteLine("3. Multi-threaded FizzBuzz");
-    	Console.WriteLine("\nPlease enter your choice of FizzBuzz options: (1-3)");
+        Console.WriteLine("3. Recursive FizzBuzz");
+    	Console.WriteLine("4. Multi-threaded FizzBuzz");
+    	Console.WriteLine("\nPlease enter your choice of FizzBuzz options: (1-4)");
 
     	//user input
     	int answer = int.Parse(Console.ReadLine());
@@ -34,8 +35,12 @@ class FizzBuzz {
     			int fizzBuzzLength = int.Parse(Console.ReadLine());
     			dynamicFizzBuzz(fizzBuzzLength);
     			break;
-    		//multithreaded fizzbuzz function - also extra class call
-    		case 3:
+    		//recursive fizzbuzz function
+            case 3:
+                recursiveFizzBuzz(1);
+                break;
+            //multithreaded fizzbuzz function - also extra class call
+    		case 4:
     			threadedFizzBuzz();
     			break;
     		//default switch option
@@ -81,6 +86,30 @@ class FizzBuzz {
                 Console.WriteLine(n);
             }
         }
+    }
+
+    //this function displays a recursive version of FizzBuzz.
+    //parameter: number: This value will be evaluated with modulus 3,5, and 15
+    static void recursiveFizzBuzz(int number) {
+            if (number <= 99) {
+                recursiveFizzBuzz(number + 1);
+            }
+            {
+                if (number % 15 == 0) {
+                Console.WriteLine("FizzBuzz");
+                }
+                else if (number % 3 == 0) {
+                    Console.WriteLine("Fizz");
+                }
+                else if (number % 5 == 0) {
+                    Console.WriteLine("Buzz");
+                }
+                else {
+                    Console.WriteLine(number);
+                }
+            }
+
+            
     }
 
     //this fucntion demonstrates multithreading in the fizzbuzz program
